@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="de">
+<html lang="de" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -80,7 +80,7 @@
       <div>
         <div class="hero__kicker">
           <span class="pill pill--yellow">Döner &amp; Pizza in Altötting</span>
-          <span class="pill"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 20V10.5A4 4 0 0 1 6 3h12a4 4 0 0 1 1 7.5V20a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1Z"/><path d="m9 9 2 2m2-4 2 2m-6 4 2 2"/></svg>Brot frisch aus dem Ofen</span>
+          <a class="pill pill--rating" href="#bewertungen"><span class="pill__star" aria-hidden="true">★</span>4,6 bei Google · 195 Bewertungen</a>
         </div>
         <h1 id="hero-title">
           <span class="line">Frisch gebackenes Brot.</span>
@@ -98,7 +98,7 @@
         </ul>
       </div>
       <div class="hero__visual">
-        <figure class="ph" data-foto="doener.jpg" data-alt="Döner im frisch gebackenen Fladenbrot bei Besto in Altötting">
+        <figure class="ph has-photo" data-foto="doener.jpg"><img src="assets/img/fotos/doener.jpg" alt="Döner im frisch gebackenen Brot mit Fleisch, Tomaten, Blaukraut und hausgemachter Soße" decoding="async">
           <figcaption class="ph__label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3Z"/><circle cx="12" cy="13" r="3"/></svg>[FOTO: Döner]<small>assets/img/fotos/doener.jpg</small></figcaption>
         </figure>
         <div class="sticker" aria-hidden="true"><div>Frisch<br>gebacken!<small>jede Bestellung</small></div></div>
@@ -164,7 +164,7 @@
       <div class="dishes-hl">
         <a class="hl-card reveal" style="--d:0s" href="speisekarte.html#g-1">
           <div class="hl-card__media">
-            <figure class="ph" data-foto="doener.jpg" data-alt="Döner im Fladenbrot bei Besto Döner &amp; Pizza in Altötting">
+            <figure class="ph has-photo" data-foto="doener.jpg"><img src="assets/img/fotos/doener.jpg" alt="Döner im Fladenbrot bei Besto Döner &amp; Pizza in Altötting" loading="lazy" decoding="async">
               <figcaption class="ph__label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3Z"/><circle cx="12" cy="13" r="3"/></svg>[FOTO: Döner]<small>assets/img/fotos/doener.jpg</small></figcaption>
             </figure>
           </div>
@@ -237,6 +237,82 @@
       </div>
       <div class="center-cta reveal">
         <a class="btn btn--dark btn--lg" href="speisekarte.html">Zur kompletten Speisekarte <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BEWERTUNGEN ========== -->
+  <section class="section reviews dark" id="bewertungen" aria-labelledby="rev-title">
+    <div class="container">
+      <div class="reviews__head">
+        <div class="reveal">
+          <span class="eyebrow">Das sagen unsere Gäste</span>
+          <h2 id="rev-title">Einer der beliebtesten Dönerläden in Altötting</h2>
+          <p>Frische Zutaten, saftiges Fleisch, freundlicher Service – das schreiben unsere Gäste auf Google.</p>
+          <ul class="reviews__tags" aria-label="Häufig erwähnt"><li>Zutaten</li><li>perfekt</li><li>Dönerladen</li><li>Bestellung</li></ul>
+        </div>
+        <a class="rating-card reveal" href="https://www.google.com/maps/search/?api=1&amp;query=Besto+D%C3%B6ner+%26+Pizza+Trostberger+Str.+52+Alt%C3%B6tting" target="_blank" rel="noopener" style="--d:.1s">
+          <span class="rating-card__label">Google-Bewertungen</span>
+          <span class="rating-card__value">4,6</span>
+          <span class="stars" role="img" aria-label="4,6 von 5 Sternen"><span class="stars__bg" aria-hidden="true">★★★★★</span><span class="stars__fg" aria-hidden="true" style="width:92%">★★★★★</span></span>
+          <span class="rating-card__count">195 Rezensionen</span>
+          <span class="rating-card__more">Alle ansehen <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
+      <div class="reviews__grid">
+        <figure class="review reveal" style="--d:0s">
+          <span class="stars" role="img" aria-label="5 von 5 Sternen"><span class="stars__bg" aria-hidden="true">★★★★★</span><span class="stars__fg" aria-hidden="true" style="width:100%">★★★★★</span></span>
+          <blockquote>Sehr guter Döner. Geschmacklich top – saftiges Fleisch, frische Zutaten und insgesamt sehr stimmig. Auch optisch macht der Döner einiges her …</blockquote>
+          <figcaption>
+            <span class="review__avatar" aria-hidden="true">R</span>
+            <span><strong>Richard S.</strong><small>vor 6 Monaten · Verzehr im Restaurant</small></span>
+            <span class="review__src">Google</span>
+          </figcaption>
+        </figure>
+        <figure class="review reveal review--placeholder" style="--d:0.08s">
+          <span class="stars" role="img" aria-label="5 von 5 Sternen"><span class="stars__bg" aria-hidden="true">★★★★★</span><span class="stars__fg" aria-hidden="true" style="width:100%">★★★★★</span></span>
+          <blockquote><span class="placeholder">[REZENSION 2 – folgt]</span></blockquote>
+          <figcaption>
+            <span class="review__avatar" aria-hidden="true">?</span>
+            <span><strong><span class="placeholder">[NAME]</span></strong></span>
+            <span class="review__src">Google</span>
+          </figcaption>
+        </figure>
+        <figure class="review reveal review--placeholder" style="--d:0.16s">
+          <span class="stars" role="img" aria-label="5 von 5 Sternen"><span class="stars__bg" aria-hidden="true">★★★★★</span><span class="stars__fg" aria-hidden="true" style="width:100%">★★★★★</span></span>
+          <blockquote><span class="placeholder">[REZENSION 3 – folgt]</span></blockquote>
+          <figcaption>
+            <span class="review__avatar" aria-hidden="true">?</span>
+            <span><strong><span class="placeholder">[NAME]</span></strong></span>
+            <span class="review__src">Google</span>
+          </figcaption>
+        </figure>
+      </div>
+      <p class="reviews__note">Auszüge aus öffentlichen Google-Rezensionen. <a href="https://www.google.com/maps/search/?api=1&amp;query=Besto+D%C3%B6ner+%26+Pizza+Trostberger+Str.+52+Alt%C3%B6tting" target="_blank" rel="noopener">Selbst bewerten auf Google</a></p>
+    </div>
+  </section>
+
+  <!-- ========== EINBLICKE ========== -->
+  <section class="section" id="einblicke" aria-labelledby="gal-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Einblicke</span>
+        <h2 id="gal-title">Gemütlich essen oder schnell mitnehmen</h2>
+        <p>In unserem Imbiss in Altötting kannst Du in Ruhe sitzen – oder Du nimmst Dein Essen einfach mit.</p>
+      </div>
+      <div class="gallery">
+        <figure class="gallery__item gallery__item--wide reveal">
+          <div class="ph has-photo" data-foto="innenraum.jpg"><img src="assets/img/fotos/innenraum.jpg" alt="Gastraum von Besto Döner &amp; Pizza in Altötting mit Tischen und Pflanzen" loading="lazy" decoding="async"></div>
+          <figcaption>Unser Gastraum</figcaption>
+        </figure>
+        <figure class="gallery__item reveal" style="--d:.08s">
+          <div class="ph has-photo" data-foto="teller.jpg"><img src="assets/img/fotos/teller.jpg" alt="Knuspriger Teller mit Pommes, Krautsalat und Knoblauchsoße" loading="lazy" decoding="async"></div>
+          <figcaption>Frisch angerichtet</figcaption>
+        </figure>
+        <figure class="gallery__item reveal" style="--d:.16s">
+          <div class="ph has-photo" data-foto="doener.jpg"><img src="assets/img/fotos/doener.jpg" alt="Döner mit Sesambrot, Fleisch und hausgemachter Soße" loading="lazy" decoding="async"></div>
+          <figcaption>Unser Döner</figcaption>
+        </figure>
       </div>
     </div>
   </section>

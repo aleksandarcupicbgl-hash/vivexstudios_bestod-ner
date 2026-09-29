@@ -80,6 +80,30 @@
       zeiten: "[LIEFERZEITEN]"
     },
 
+    /*
+     * Google-Bewertungen (Stand laut Google-Profil). Werte bei Bedarf aktualisieren.
+     * Rezensionen: nur mit Einverständnis bzw. als Zitat mit Quelle verwenden,
+     * Name am besten abgekürzt (Vorname + Initial).
+     * Leere/Platzhalter-Einträge (platzhalter: true) werden markiert angezeigt.
+     */
+    bewertungen: {
+      schnitt: 4.6,
+      anzahl: 195,
+      url: "https://www.google.com/maps/search/?api=1&query=Besto+D%C3%B6ner+%26+Pizza+Trostberger+Str.+52+Alt%C3%B6tting",
+      stichworte: ["Zutaten", "perfekt", "Dönerladen", "Bestellung"],
+      liste: [
+        {
+          name: "Richard S.",
+          sterne: 5,
+          datum: "vor 6 Monaten",
+          art: "Verzehr im Restaurant",
+          text: "Sehr guter Döner. Geschmacklich top – saftiges Fleisch, frische Zutaten und insgesamt sehr stimmig. Auch optisch macht der Döner einiges her …"
+        },
+        { name: "[NAME]", sterne: 5, datum: "", art: "", text: "[REZENSION 2 – folgt]", platzhalter: true },
+        { name: "[NAME]", sterne: 5, datum: "", art: "", text: "[REZENSION 3 – folgt]", platzhalter: true }
+      ]
+    },
+
     speisekarteStand: "[DATUM]" // z. B. "Oktober 2026"
   };
 

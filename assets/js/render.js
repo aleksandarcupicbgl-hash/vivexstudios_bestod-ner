@@ -65,10 +65,17 @@
     return h;
   }
 
+  /* Welche Filter-Typen kommen in der Kategorie vor? (für die CSS-Filter ohne JavaScript) */
+  function hasTypes(kat) {
+    var t = [];
+    kat.gerichte.forEach(function (g) { if (g.typ && t.indexOf(g.typ) < 0) t.push(g.typ); });
+    return t.join(" ");
+  }
+
   function renderMenu(karte, config) {
     var h = "";
     karte.kategorien.forEach(function (kat) {
-      h += '<section class="menu-cat' + (kat.angebot ? " menu-cat--angebot" : "") + '" id="' + kat.id + '" data-cat="' + kat.id + '" aria-labelledby="h-' + kat.id + '">';
+      h += '<section class="menu-cat' + (kat.angebot ? " menu-cat--angebot" : "") + '" id="' + kat.id + '" data-cat="' + kat.id + '" data-has="' + hasTypes(kat) + '" aria-labelledby="h-' + kat.id + '">';
       h += '<header class="menu-cat__head"><h2 id="h-' + kat.id + '">' + esc(kat.titel) + "</h2>";
       if (kat.intro) h += "<p>" + esc(kat.intro) + "</p>";
       if (kat.spalten) h += '<p class="menu-cat__sizes">Größen: ' + kat.spalten.map(esc).join(" · ") + "</p>";
@@ -92,7 +99,7 @@
 
   function renderMenuNav(karte) {
     return karte.kategorien.map(function (kat) {
-      return '<a class="chip" href="#' + kat.id + '" data-nav="' + kat.id + '">' + esc(kat.nav || kat.titel) + "</a>";
+      return '<a class="chip" href="#' + kat.id + '" data-nav="' + kat.id + '" data-has="' + hasTypes(kat) + '">' + esc(kat.nav || kat.titel) + "</a>";
     }).join("");
   }
 

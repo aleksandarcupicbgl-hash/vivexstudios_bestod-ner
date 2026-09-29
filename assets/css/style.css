@@ -64,6 +64,7 @@ p { margin: 0 0 1em; }
 a { color: inherit; }
 button, input { font: inherit; color: inherit; }
 .sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+[hidden] { display: none !important; }
 .container { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter); }
 .icon { width: 1.25em; height: 1.25em; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 :focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; border-radius: 6px; }
@@ -433,7 +434,25 @@ body.has-bottom-bar .site-footer { padding-bottom: calc(28px + 76px + env(safe-a
 .chip:hover { border-color: var(--red); color: var(--red-dark); }
 .chip[aria-current="true"], .chip[aria-pressed="true"] { background: var(--red); border-color: var(--red); color: #fff; }
 .chip .icon { width: 1.05em; height: 1.05em; }
-.chip--veg[aria-pressed="true"] { background: var(--green-dark); border-color: var(--green-dark); }
+.filter-input:checked + .chip { background: var(--red); border-color: var(--red); color: #fff; }
+.filter-input:checked + .chip--veg { background: var(--green-dark); border-color: var(--green-dark); }
+.filter-input:focus-visible + .chip { outline: 3px solid var(--red); outline-offset: 2px; }
+
+/* Typ-Filter – reines CSS (funktioniert auch, wenn JavaScript blockiert ist).
+   :has() für moderne Browser, [data-filter] als Fallback (per JS gesetzt). */
+.menu-layout:has(#f-veg:checked) .dish:not([data-typ="veg"]),
+.menu-layout:has(#f-fleisch:checked) .dish:not([data-typ="fleisch"]),
+.menu-layout:has(#f-fisch:checked) .dish:not([data-typ="fisch"]),
+.menu-layout:has(#f-veg:checked) :is(.menu-cat, [data-nav]):not([data-has~="veg"]),
+.menu-layout:has(#f-fleisch:checked) :is(.menu-cat, [data-nav]):not([data-has~="fleisch"]),
+.menu-layout:has(#f-fisch:checked) :is(.menu-cat, [data-nav]):not([data-has~="fisch"]),
+.menu-layout[data-filter="veg"] .dish:not([data-typ="veg"]),
+.menu-layout[data-filter="fleisch"] .dish:not([data-typ="fleisch"]),
+.menu-layout[data-filter="fisch"] .dish:not([data-typ="fisch"]),
+.menu-layout[data-filter="veg"] :is(.menu-cat, [data-nav]):not([data-has~="veg"]),
+.menu-layout[data-filter="fleisch"] :is(.menu-cat, [data-nav]):not([data-has~="fleisch"]),
+.menu-layout[data-filter="fisch"] :is(.menu-cat, [data-nav]):not([data-has~="fisch"]) { display: none; }
+.no-js .js-only, .no-js .search { display: none; }
 
 @media (min-width: 1024px) {
   .menu-nav-wrap { position: sticky; top: calc(var(--header-h) + 24px); margin: 0; background: none; border: 0; -webkit-backdrop-filter: none; backdrop-filter: none; }
@@ -581,3 +600,57 @@ body.has-bottom-bar .site-footer { padding-bottom: calc(28px + 76px + env(safe-a
 }
 .print-logo { display: none; }
 .pt-0 { padding-top: 0; }
+
+/* ---------- Bewertungen ---------- */
+.pill--rating { text-decoration: none; background: rgba(253, 236, 0, .12); border-color: rgba(253, 236, 0, .35); color: #fff; min-height: 32px; transition: background-color .2s; }
+.pill--rating:hover { background: rgba(253, 236, 0, .22); }
+.pill__star { color: var(--yellow); font-size: 1.05em; line-height: 1; }
+.stars { position: relative; display: inline-block; font-size: 1.15rem; line-height: 1; letter-spacing: 2px; white-space: nowrap; }
+.stars__bg { color: rgba(255, 255, 255, .2); }
+.stars__fg { position: absolute; left: 0; top: 0; overflow: hidden; color: #fbbc04; }
+.reviews { background: radial-gradient(60% 70% at 100% 0%, rgba(253, 236, 0, .1), transparent 70%), var(--anthracite); }
+.reviews__head { display: grid; gap: 28px; align-items: center; margin-bottom: clamp(28px, 4vw, 44px); }
+@media (min-width: 900px) { .reviews__head { grid-template-columns: 1fr auto; gap: 48px; } }
+.reviews__head p { color: var(--on-dark-muted); max-width: 36em; }
+.reviews__tags { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; }
+.reviews__tags li { padding: .35em .85em; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .15); font-size: .88rem; font-weight: 600; }
+.reviews__tags li::before { content: "✓ "; color: var(--yellow); }
+.rating-card {
+  display: grid; justify-items: center; gap: 6px; text-align: center; text-decoration: none; color: var(--ink);
+  background: #fff; border-radius: 24px; padding: 24px 32px; min-width: 240px; box-shadow: 0 20px 40px rgba(0, 0, 0, .35);
+  transition: transform .25s var(--ease);
+}
+.rating-card:hover { transform: translateY(-4px); }
+.rating-card__label { font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.rating-card__value { font-family: var(--font-head); font-weight: 800; font-size: 4rem; line-height: 1; }
+.rating-card .stars { font-size: 1.5rem; }
+.rating-card .stars__bg { color: #e2ddd4; }
+.rating-card__count { color: var(--muted); font-size: .92rem; }
+.rating-card__more { display: inline-flex; align-items: center; gap: .35em; font-weight: 700; color: var(--red-dark); margin-top: 6px; }
+.reviews__grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
+@media (min-width: 768px) { .reviews__grid { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+.review { margin: 0; display: flex; flex-direction: column; gap: 14px; background: rgba(255, 255, 255, .05); border: 1px solid rgba(255, 255, 255, .1); border-radius: 20px; padding: 24px; }
+.review blockquote { margin: 0; flex: 1; font-size: 1.02rem; line-height: 1.6; color: var(--on-dark); }
+.review blockquote::before { content: "„"; font-family: var(--font-head); font-size: 2.6rem; line-height: 0; color: var(--yellow); display: block; height: .45em; }
+.review figcaption { display: flex; align-items: center; gap: 12px; font-size: .95rem; }
+.review figcaption strong { display: block; color: #fff; }
+.review figcaption small { display: block; color: var(--on-dark-muted); font-size: .8rem; }
+.review__avatar { width: 40px; height: 40px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--red); color: #fff; font-weight: 700; }
+.review__src { margin-left: auto; font-size: .75rem; font-weight: 700; color: var(--on-dark-muted); border: 1px solid rgba(255, 255, 255, .15); border-radius: 999px; padding: .15em .6em; }
+.review--placeholder { border-style: dashed; border-color: rgba(253, 236, 0, .4); }
+.reviews__note { margin: 20px 0 0; font-size: .85rem; color: var(--on-dark-muted); }
+.reviews__note a { color: var(--yellow); }
+
+/* ---------- Galerie ---------- */
+.gallery { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
+.gallery__item { margin: 0; position: relative; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.gallery__item--wide { grid-column: 1 / -1; }
+.gallery__item .ph { aspect-ratio: 3 / 4; border-radius: 0; }
+.gallery__item--wide .ph { aspect-ratio: 16 / 10; }
+.gallery__item figcaption { position: absolute; left: 12px; bottom: 12px; background: rgba(14, 14, 14, .78); color: #fff; font-weight: 600; font-size: .88rem; padding: .35em .8em; border-radius: 999px; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+@media (min-width: 900px) {
+  .gallery { grid-template-columns: 2fr 1fr 1fr; gap: 20px; }
+  .gallery__item--wide { grid-column: auto; }
+  .gallery__item .ph, .gallery__item--wide .ph { aspect-ratio: auto; height: 440px; }
+}
+.hero__visual .ph img { object-position: center 45%; }

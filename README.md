@@ -30,7 +30,7 @@ Texte der Seiten bitte in `src/*.html` ändern (nicht in den erzeugten Dateien i
 Einfach Dateien mit diesen Namen in `assets/img/fotos/` legen – sie erscheinen automatisch
 (am besten JPG, ca. 1200 × 900 px, 4:3):
 
-`doener.jpg` · `duerum.jpg` · `doener-box.jpg` · `lahmacun.jpg` · `pizza.jpg` · `falafel.jpg`
+`doener.jpg` ✓ · `innenraum.jpg` ✓ · `teller.jpg` ✓ · `duerum.jpg` · `doener-box.jpg` · `lahmacun.jpg` · `pizza.jpg` · `falafel.jpg`
 
 Danach `node tools/build.js`, damit die Fotos auch in `vorschau.html` erscheinen.
 
@@ -53,5 +53,6 @@ python3 -m http.server 8080
 - [ ] `[GRÖSSE PRÜFEN]` – Red Bull
 - [ ] `[HOSTING-ANBIETER]` – `src/datenschutz.html`
 - [ ] `[FOTO: …]` – siehe oben
+- [ ] `[REZENSION 2/3]` – Google-Rezensionen in `config.js` → `bewertungen.liste` eintragen
 - [ ] Speisekarte Nr. 18–19 fehlen noch
 - [ ] Lieferservice? Falls ja: `lieferservice.aktiv = true` + Werte in `config.js`

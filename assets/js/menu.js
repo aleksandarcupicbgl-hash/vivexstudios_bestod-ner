@@ -15,10 +15,14 @@
   var cats = Array.prototype.slice.call(list.querySelectorAll(".menu-cat"));
   var chips = nav ? Array.prototype.slice.call(nav.querySelectorAll("[data-nav]")) : [];
   var search = document.getElementById("menu-search");
-  var filterBtns = Array.prototype.slice.call(document.querySelectorAll("[data-filter]"));
+  var radios = Array.prototype.slice.call(document.querySelectorAll(".filter-input"));
+  var main = document.querySelector(".menu-layout");
   var status = document.getElementById("menu-status");
   var empty = document.getElementById("menu-empty");
-  var filter = "alle";
+  function currentFilter() {
+    for (var i = 0; i < radios.length; i++) if (radios[i].checked) return radios[i].value;
+    return "alle";
+  }
 
   function norm(s) {
     return (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ß/g, "ss");
@@ -28,18 +32,20 @@
   function apply() {
     var q = norm(search ? search.value.trim() : "");
     var terms = q ? q.split(/\s+/) : [];
-    var count = 0;
+    var count = 0, filter = currentFilter();
+    // Typ-Filter läuft per CSS (data-filter bzw. :checked) – funktioniert so auch ohne JavaScript.
+    if (main) main.setAttribute("data-filter", filter);
     dishes.forEach(function (d) {
-      var typ = d.getAttribute("data-typ");
-      var okFilter = filter === "alle" || typ === filter;
+      var okFilter = filter === "alle" || d.getAttribute("data-typ") === filter;
       var okSearch = terms.every(function (t) { return d._search.indexOf(t) > -1; });
-      var show = okFilter && okSearch;
-      d.hidden = !show;
-      if (show) count++;
+      d.hidden = !okSearch;
+      if (okFilter && okSearch) count++;
     });
     var active = filter !== "alle" || terms.length > 0;
     cats.forEach(function (c) {
-      var visible = c.querySelectorAll(".dish:not([hidden])").length;
+      var visible = Array.prototype.filter.call(c.querySelectorAll(".dish:not([hidden])"), function (d) {
+        return filter === "alle" || d.getAttribute("data-typ") === filter;
+      }).length;
       c.hidden = visible === 0;
       var chip = nav && nav.querySelector('[data-nav="' + c.id + '"]');
       if (chip) chip.hidden = visible === 0;
@@ -49,13 +55,7 @@
     spy();
   }
 
-  filterBtns.forEach(function (b) {
-    b.addEventListener("click", function () {
-      filter = b.getAttribute("data-filter");
-      filterBtns.forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
-      apply();
-    });
-  });
+  radios.forEach(function (r) { r.addEventListener("change", apply); });
   if (search) {
     search.addEventListener("input", apply);
     search.addEventListener("keydown", function (e) { if (e.key === "Escape") { search.value = ""; apply(); } });
@@ -63,10 +63,14 @@
   var reset = document.getElementById("menu-reset");
   if (reset) reset.addEventListener("click", function () {
     if (search) search.value = "";
-    filter = "alle";
-    filterBtns.forEach(function (x) { x.setAttribute("aria-pressed", String(x.getAttribute("data-filter") === "alle")); });
+    var all = document.getElementById("f-alle");
+    if (all) all.checked = true;
     apply();
   });
+
+  var printBtn = document.getElementById("print-btn");
+  if (printBtn) printBtn.addEventListener("click", function () { window.print(); });
+  apply();
 
   /* ---------- Aktive Kategorie markieren (Scrollspy) ---------- */
   var current = null;

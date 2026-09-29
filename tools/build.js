@@ -80,6 +80,25 @@ function offerListHtml() {
   ).join("");
 }
 
+function starsHtml(value) {
+  const pct = Math.max(0, Math.min(100, (value / 5) * 100));
+  const row = "★★★★★";
+  return `<span class="stars" role="img" aria-label="${String(value).replace(".", ",")} von 5 Sternen"><span class="stars__bg" aria-hidden="true">${row}</span><span class="stars__fg" aria-hidden="true" style="width:${pct}%">${row}</span></span>`;
+}
+
+function reviewsHtml() {
+  const b = cfg.bewertungen;
+  return b.liste.map((r, i) => `        <figure class="review reveal${r.platzhalter ? " review--placeholder" : ""}" style="--d:${i * 0.08}s">
+          ${starsHtml(r.sterne)}
+          <blockquote>${ph(r.text)}</blockquote>
+          <figcaption>
+            <span class="review__avatar" aria-hidden="true">${R.esc(r.platzhalter ? "?" : r.name.charAt(0))}</span>
+            <span><strong>${ph(r.name)}</strong>${r.datum || r.art ? `<small>${R.esc([r.datum, r.art].filter(Boolean).join(" · "))}</small>` : ""}</span>
+            <span class="review__src">Google</span>
+          </figcaption>
+        </figure>`).join("\n");
+}
+
 function isPlaceholder(v) { return /\[[^\]]+\]/.test(String(v)); }
 function ph(v) { return isPlaceholder(v) ? '<span class="placeholder">' + R.esc(v) + "</span>" : R.esc(v); }
 
@@ -115,19 +134,33 @@ const VARS = {
   menuNav: R.renderMenuNav(karte),
   highlights: highlightsHtml(),
   offerList: offerListHtml(),
+  reviews: reviewsHtml(),
+  ratingStars: starsHtml(cfg.bewertungen.schnitt),
+  ratingValue: String(cfg.bewertungen.schnitt).replace(".", ","),
+  ratingCount: String(cfg.bewertungen.anzahl),
+  ratingUrl: R.esc(cfg.bewertungen.url),
+  ratingTags: cfg.bewertungen.stichworte.map((t) => `<li>${R.esc(t)}</li>`).join(""),
   jsonld: jsonSafe(R.restaurantSchema(cfg)),
   jsonldMenu: jsonSafe(R.restaurantSchema(cfg, karte))
 };
 
+/* Vorhandene Fotos aus assets/img/fotos/ direkt ins HTML schreiben (sichtbar auch ohne JavaScript) */
+function staticPhotos(html) {
+  return html.replace(/<(figure|div) class="ph([^"]*)" data-foto="([^"]+)" data-alt="([^"]*)"( data-eager)?>/g, (m, tag, cls, foto, alt, eager) => {
+    if (!fs.existsSync(rel("assets/img/fotos/" + foto))) return m;
+    return `<${tag} class="ph${cls} has-photo" data-foto="${foto}"><img src="assets/img/fotos/${foto}" alt="${alt}"${eager ? "" : ' loading="lazy"'} decoding="async">`;
+  });
+}
+
 function render(tpl, pageKey) {
   // Partials (dürfen selbst Variablen enthalten)
   tpl = tpl.replace(/\{\{>\s*([\w-]+)\s*\}\}/g, (_, n) => read("src/partials/" + n + ".html").trim());
-  return tpl.replace(/\{\{([\w:-]+)\}\}/g, (m, key) => {
+  return staticPhotos(tpl.replace(/\{\{([\w:-]+)\}\}/g, (m, key) => {
     if (key.startsWith("icon:")) return icon(key.slice(5));
     if (key.startsWith("current:")) return key.slice(8) === pageKey ? ' aria-current="page"' : "";
     if (key in VARS) return VARS[key];
     throw new Error("Unbekannte Variable " + m);
-  });
+  }));
 }
 
 /* ---------- 1) Seiten bauen ---------- */
@@ -152,15 +185,6 @@ function rewriteLinks(html) {
   const map = { "index.html": "seite-start", "speisekarte.html": "seite-speisekarte", "impressum.html": "seite-impressum", "datenschutz.html": "seite-datenschutz" };
   return html.replace(/href="(index|speisekarte|impressum|datenschutz)\.html(#[^"]*)?"/g, (m, page, hash) =>
     'href="' + (hash || "#" + map[page + ".html"]) + '"');
-}
-
-function embedPhotos(html) {
-  // Bereits vorhandene Fotos direkt einbetten (Vorschau hat keinen Server)
-  return html.replace(/<figure class="ph" data-foto="([^"]+)" data-alt="([^"]*)">/g, (m, foto, alt) => {
-    const file = "assets/img/fotos/" + foto;
-    if (!fs.existsSync(rel(file))) return m;
-    return `<figure class="ph has-photo" data-foto="${foto}" data-alt="${alt}"><img src="${dataUri(file)}" alt="${alt}" loading="lazy">`;
-  });
 }
 
 const mainOf = (html) => html.match(/<main id="inhalt">([\s\S]*?)<\/main>/)[1];
@@ -189,7 +213,7 @@ ${headerHtml}
 </main>
 ${footerHtml}
 ${bottomHtml}`;
-body = embedPhotos(inlineAssets(rewriteLinks(body)));
+body = inlineAssets(rewriteLinks(body));
 
 const vorschau = `<!doctype html>
 <html lang="de">

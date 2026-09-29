@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="de">
+<html lang="de" class="no-js">
 <head>
 {{> head}}
 <title>Speisekarte – Besto Döner & Pizza Altötting | Döner, Pizza, Pasta & Salate</title>
@@ -23,7 +23,7 @@
       <p class="fresh-note">{{icon:bread}}<span>Unser Döner- und Dürümbrot wird bei jeder Bestellung frisch gebacken!</span></p>
       <div class="page-hero__cta">
         <a class="btn btn--lg" href="{{telefonLink}}">{{icon:phone}}Jetzt bestellen: {{telefon}}</a>
-        <button class="btn btn--ghost btn--lg no-print" type="button" onclick="window.print()">{{icon:printer}}Karte drucken</button>
+        <button class="btn btn--ghost btn--lg no-print js-only" type="button" id="print-btn">{{icon:printer}}Karte drucken</button>
       </div>
     </div>
   </section>
@@ -48,11 +48,15 @@
               {{icon:search}}
               <input type="search" id="menu-search" placeholder="Gericht suchen …" autocomplete="off" enterkeyhint="search">
             </label>
-            <div class="filters" role="group" aria-label="Filter">
-              <button class="chip" type="button" data-filter="alle" aria-pressed="true">{{icon:grid}}Alle</button>
-              <button class="chip chip--veg" type="button" data-filter="veg" aria-pressed="false">{{icon:leaf}}Vegetarisch</button>
-              <button class="chip" type="button" data-filter="fleisch" aria-pressed="false">{{icon:flame}}Mit Fleisch</button>
-              <button class="chip" type="button" data-filter="fisch" aria-pressed="false">{{icon:fish}}Fisch &amp; Meeresfrüchte</button>
+            <div class="filters" role="radiogroup" aria-label="Filter">
+              <input class="filter-input sr-only" type="radio" name="filter" id="f-alle" value="alle" checked>
+              <label class="chip" for="f-alle">{{icon:grid}}Alle</label>
+              <input class="filter-input sr-only" type="radio" name="filter" id="f-veg" value="veg">
+              <label class="chip chip--veg" for="f-veg">{{icon:leaf}}Vegetarisch</label>
+              <input class="filter-input sr-only" type="radio" name="filter" id="f-fleisch" value="fleisch">
+              <label class="chip" for="f-fleisch">{{icon:flame}}Mit Fleisch</label>
+              <input class="filter-input sr-only" type="radio" name="filter" id="f-fisch" value="fisch">
+              <label class="chip" for="f-fisch">{{icon:fish}}Fisch &amp; Meeresfrüchte</label>
             </div>
           </div>
           <p class="menu-status" id="menu-status" role="status" aria-live="polite"></p>

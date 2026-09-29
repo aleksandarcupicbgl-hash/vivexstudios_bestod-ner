@@ -2,6 +2,7 @@
 (function () {
   "use strict";
   var doc = document.documentElement;
+  doc.classList.remove("no-js");
   var cfg = window.BESTO_CONFIG;
   var R = window.BESTO_RENDER;
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -95,7 +96,7 @@
 
   /* ---------- Fotos: einfach Datei in assets/img/fotos/ legen ---------- */
   if (!window.BESTO_VORSCHAU) {
-    document.querySelectorAll(".ph[data-foto]").forEach(function (ph) {
+    document.querySelectorAll(".ph[data-foto]:not(.has-photo)").forEach(function (ph) {
       var img = new Image();
       img.alt = ph.getAttribute("data-alt") || "";
       img.loading = "lazy";

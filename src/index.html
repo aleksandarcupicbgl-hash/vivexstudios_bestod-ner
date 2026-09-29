@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="de">
+<html lang="de" class="no-js">
 <head>
 {{> head}}
 <title>Besto Döner & Pizza Altötting – Döner, Dürüm, Lahmacun & Pizza</title>
@@ -21,7 +21,7 @@
       <div>
         <div class="hero__kicker">
           <span class="pill pill--yellow">Döner &amp; Pizza in Altötting</span>
-          <span class="pill">{{icon:bread}}Brot frisch aus dem Ofen</span>
+          <a class="pill pill--rating" href="#bewertungen"><span class="pill__star" aria-hidden="true">★</span>{{ratingValue}} bei Google · {{ratingCount}} Bewertungen</a>
         </div>
         <h1 id="hero-title">
           <span class="line">Frisch gebackenes Brot.</span>
@@ -39,7 +39,7 @@
         </ul>
       </div>
       <div class="hero__visual">
-        <figure class="ph" data-foto="doener.jpg" data-alt="Döner im frisch gebackenen Fladenbrot bei Besto in Altötting">
+        <figure class="ph" data-foto="doener.jpg" data-alt="Döner im frisch gebackenen Brot mit Fleisch, Tomaten, Blaukraut und hausgemachter Soße" data-eager>
           <figcaption class="ph__label">{{icon:camera}}[FOTO: Döner]<small>assets/img/fotos/doener.jpg</small></figcaption>
         </figure>
         <div class="sticker" aria-hidden="true"><div>Frisch<br>gebacken!<small>jede Bestellung</small></div></div>
@@ -107,6 +107,56 @@
       </div>
       <div class="center-cta reveal">
         <a class="btn btn--dark btn--lg" href="speisekarte.html">Zur kompletten Speisekarte {{icon:arrow}}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BEWERTUNGEN ========== -->
+  <section class="section reviews dark" id="bewertungen" aria-labelledby="rev-title">
+    <div class="container">
+      <div class="reviews__head">
+        <div class="reveal">
+          <span class="eyebrow">Das sagen unsere Gäste</span>
+          <h2 id="rev-title">Einer der beliebtesten Dönerläden in Altötting</h2>
+          <p>Frische Zutaten, saftiges Fleisch, freundlicher Service – das schreiben unsere Gäste auf Google.</p>
+          <ul class="reviews__tags" aria-label="Häufig erwähnt">{{ratingTags}}</ul>
+        </div>
+        <a class="rating-card reveal" href="{{ratingUrl}}" target="_blank" rel="noopener" style="--d:.1s">
+          <span class="rating-card__label">Google-Bewertungen</span>
+          <span class="rating-card__value">{{ratingValue}}</span>
+          {{ratingStars}}
+          <span class="rating-card__count">{{ratingCount}} Rezensionen</span>
+          <span class="rating-card__more">Alle ansehen {{icon:arrow}}</span>
+        </a>
+      </div>
+      <div class="reviews__grid">
+{{reviews}}
+      </div>
+      <p class="reviews__note">Auszüge aus öffentlichen Google-Rezensionen. <a href="{{ratingUrl}}" target="_blank" rel="noopener">Selbst bewerten auf Google</a></p>
+    </div>
+  </section>
+
+  <!-- ========== EINBLICKE ========== -->
+  <section class="section" id="einblicke" aria-labelledby="gal-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Einblicke</span>
+        <h2 id="gal-title">Gemütlich essen oder schnell mitnehmen</h2>
+        <p>In unserem Imbiss in Altötting kannst Du in Ruhe sitzen – oder Du nimmst Dein Essen einfach mit.</p>
+      </div>
+      <div class="gallery">
+        <figure class="gallery__item gallery__item--wide reveal">
+          <div class="ph" data-foto="innenraum.jpg" data-alt="Gastraum von Besto Döner &amp; Pizza in Altötting mit Tischen und Pflanzen"></div>
+          <figcaption>Unser Gastraum</figcaption>
+        </figure>
+        <figure class="gallery__item reveal" style="--d:.08s">
+          <div class="ph" data-foto="teller.jpg" data-alt="Knuspriger Teller mit Pommes, Krautsalat und Knoblauchsoße"></div>
+          <figcaption>Frisch angerichtet</figcaption>
+        </figure>
+        <figure class="gallery__item reveal" style="--d:.16s">
+          <div class="ph" data-foto="doener.jpg" data-alt="Döner mit Sesambrot, Fleisch und hausgemachter Soße"></div>
+          <figcaption>Unser Döner</figcaption>
+        </figure>
       </div>
     </div>
   </section>
