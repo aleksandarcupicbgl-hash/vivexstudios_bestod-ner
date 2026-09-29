@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="de">
+<head>
+{{> head}}
+<title>Besto Döner & Pizza Altötting – Döner, Dürüm, Lahmacun & Pizza</title>
+<meta name="description" content="Dein Imbiss in Altötting: Döner mit frisch gebackenem Brot, Dürüm, Lahmacun, Falafel und Pizza. Hausgemachte Soßen, Mittagsangebot 11–14 Uhr. Trostberger Str. 52 · Tel. 0160 4187229.">
+<link rel="canonical" href="{{domain}}/">
+<meta property="og:title" content="Besto Döner & Pizza – Döner & Pizza in Altötting">
+<meta property="og:description" content="Frisch gebackenes Brot. Zart gegrilltes Fleisch. Knackige Zutaten. Döner, Dürüm, Lahmacun & Pizza in Altötting.">
+<meta property="og:url" content="{{domain}}/">
+<script type="application/ld+json">{{jsonld}}</script>
+</head>
+<body class="has-bottom-bar">
+{{> header}}
+
+<main id="inhalt">
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container">
+      <div>
+        <div class="hero__kicker">
+          <span class="pill pill--yellow">Döner &amp; Pizza in Altötting</span>
+          <span class="pill">{{icon:bread}}Brot frisch aus dem Ofen</span>
+        </div>
+        <h1 id="hero-title">
+          <span class="line">Frisch gebackenes Brot.</span>
+          <span class="line hl-yellow">Zart gegrilltes Fleisch.</span>
+          <span class="line">Knackige Zutaten.</span>
+        </h1>
+        <p class="hero__lead">Döner, Dürüm, Lahmacun &amp; Pizza in Altötting – mit Liebe und hausgemachten Soßen zubereitet.</p>
+        <div class="hero__cta">
+          <a class="btn btn--yellow btn--lg" href="speisekarte.html">{{icon:book}}Speisekarte ansehen</a>
+          <a class="btn btn--lg" href="{{telefonLink}}">{{icon:phone}}Jetzt anrufen &amp; bestellen</a>
+        </div>
+        <ul class="hero__info">
+          <li><a href="{{mapsUrl}}" target="_blank" rel="noopener">{{icon:pin}}{{strasse}}, {{plz}} {{ort}}</a></li>
+          <li data-today><span class="status-dot" aria-hidden="true"></span><span data-today-text>Öffnungszeiten siehe unten</span></li>
+        </ul>
+      </div>
+      <div class="hero__visual">
+        <figure class="ph" data-foto="doener.jpg" data-alt="Döner im frisch gebackenen Fladenbrot bei Besto in Altötting">
+          <figcaption class="ph__label">{{icon:camera}}[FOTO: Döner]<small>assets/img/fotos/doener.jpg</small></figcaption>
+        </figure>
+        <div class="sticker" aria-hidden="true"><div>Frisch<br>gebacken!<small>jede Bestellung</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== QUALITÄT ========== -->
+  <section class="section" aria-labelledby="quali-title">
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">Unser Versprechen</span>
+        <h2 id="quali-title">Der Döner in Altötting, der nach <span class="hl-red">Frische</span> schmeckt</h2>
+        <p>Bei uns im Imbiss in Altötting kommt nichts aus der Tüte – nur gute Zutaten und Handarbeit.</p>
+      </div>
+      <div class="features">
+        <article class="feature reveal">
+          <div class="feature__icon">{{icon:salad}}</div>
+          <h3>Frische Zutaten</h3>
+          <p>Jeden Tag frisch geliefert und sorgfältig ausgewählt: knackiger Salat, saftige Tomaten, zartes Fleisch und hausgemachte Soßen.</p>
+        </article>
+        <article class="feature reveal" style="--d:.08s">
+          <div class="feature__icon">{{icon:flame}}</div>
+          <h3>Perfektes Fleisch</h3>
+          <p>Zart gegrillt, frisch geschnitten und mit Liebe zubereitet.</p>
+        </article>
+        <article class="feature reveal" style="--d:.16s">
+          <div class="feature__icon">{{icon:bread}}</div>
+          <h3>Frisch gebackenes Dönerbrot</h3>
+          <p>Unser Brot wird bei jeder Bestellung frisch gebacken und direkt aus dem Ofen serviert. Knusprig, warm und unwiderstehlich lecker.</p>
+        </article>
+        <article class="feature reveal" style="--d:.24s">
+          <div class="feature__icon">{{icon:chef}}</div>
+          <h3>Hausgemachte Qualität</h3>
+          <p>Unsere Soßen und Gewürze sind hausgemacht – das schmeckt man!</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MITTAGSANGEBOT ========== -->
+  <section class="section--tight" id="angebot" aria-labelledby="angebot-title">
+    <div class="container">
+      <div class="offer reveal">
+        <div>
+          <span class="offer__time">{{icon:clock}}{{mittagZeit}}</span>
+          <h2 id="angebot-title">Mittags-Angebot</h2>
+          <p>Täglich {{mittagZeit}} – {{mittagHinweis}}.</p>
+        </div>
+        <ul class="offer__list">{{offerList}}</ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BELIEBTE GERICHTE ========== -->
+  <section class="section" aria-labelledby="hl-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Beliebt bei unseren Gästen</span>
+        <h2 id="hl-title">Döner, Lahmacun &amp; Pizza in Altötting</h2>
+        <p>Unsere Klassiker – frisch zubereitet, schnell auf die Hand oder gemütlich als Teller.</p>
+      </div>
+      <div class="dishes-hl">
+{{highlights}}
+      </div>
+      <div class="center-cta reveal">
+        <a class="btn btn--dark btn--lg" href="speisekarte.html">Zur kompletten Speisekarte {{icon:arrow}}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== LIEFERSERVICE (vorbereitet – in config.js aktivieren) ========== -->
+  <section class="section--tight" data-delivery hidden aria-labelledby="liefer-title">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Lieferservice</span>
+        <h2 id="liefer-title">Wir liefern in Altötting &amp; Umgebung</h2>
+      </div>
+      <dl class="delivery">
+        <div><dt>Liefergebiet</dt><dd>{{ph:liefergebiet}}</dd></div>
+        <div><dt>Mindestbestellwert</dt><dd>{{ph:mindestbestellwert}}</dd></div>
+        <div><dt>Liefergebühr</dt><dd>{{ph:liefergebuehr}}</dd></div>
+        <div><dt>Lieferzeiten</dt><dd>{{ph:lieferzeiten}}</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ========== ÖFFNUNGSZEITEN & ANFAHRT ========== -->
+  <section class="section pt-0" id="oeffnungszeiten" aria-labelledby="zeiten-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Öffnungszeiten &amp; Anfahrt</span>
+        <h2 id="zeiten-title">Dein Imbiss in Altötting</h2>
+      </div>
+      <div class="visit">
+        <div class="panel reveal">
+          <div class="panel__head">
+            <h3>Öffnungszeiten</h3>
+            <span class="status-pill" data-open-status><span class="status-dot" aria-hidden="true"></span><span data-open-text>Öffnungszeiten</span></span>
+          </div>
+          {{hoursTable}}
+        </div>
+        <div class="panel panel--dark reveal" style="--d:.1s">
+          <div class="panel__head"><h3>Anfahrt</h3></div>
+          <address class="address">
+            <strong>{{name}}</strong>
+            {{strasse}}<br>{{plz}} {{ort}}
+          </address>
+          <div class="visit__actions">
+            <a class="btn btn--yellow btn--lg btn--block" href="{{mapsUrl}}" target="_blank" rel="noopener">{{icon:route}}Route planen</a>
+            <a class="btn btn--ghost btn--lg btn--block" href="{{telefonLink}}">{{icon:phone}}{{telefon}}</a>
+          </div>
+          <p class="visit__note">Der Link öffnet Google Maps in einem neuen Fenster.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== KONTAKT ========== -->
+  <section class="section contact dark" id="kontakt" aria-labelledby="kontakt-title">
+    <div class="container">
+      <span class="eyebrow">Kontakt</span>
+      <h2 id="kontakt-title">Komm vorbei und erlebe, was <span class="hl-yellow">Frische</span> wirklich bedeutet!</h2>
+      <div class="contact__grid">
+        <a class="contact-btn contact-btn--primary reveal" href="{{telefonLink}}">{{icon:phone}}<strong>Anrufen</strong><span>{{telefon}}</span></a>
+        <a class="contact-btn reveal" style="--d:.06s" href="{{instagramUrl}}" target="_blank" rel="noopener">{{icon:instagram}}<strong>Instagram</strong><span>@{{instagramName}}</span></a>
+        <a class="contact-btn reveal" style="--d:.12s" href="{{facebookUrl}}" target="_blank" rel="noopener">{{icon:facebook}}<strong>Facebook</strong><span>{{facebookName}}</span></a>
+        <a class="contact-btn reveal" style="--d:.18s" href="{{mapsUrl}}" target="_blank" rel="noopener">{{icon:route}}<strong>Route</strong><span>{{strasse}}</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+{{> footer}}
+{{> bottombar}}
+{{> scripts}}
+</body>
+</html>

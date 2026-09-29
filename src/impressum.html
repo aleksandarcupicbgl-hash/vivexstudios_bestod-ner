@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="de">
+<head>
+{{> head}}
+<title>Impressum – Besto Döner & Pizza Altötting</title>
+<meta name="description" content="Impressum von Besto Döner & Pizza, Trostberger Str. 52, 84503 Altötting.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="{{domain}}/impressum.html">
+</head>
+<body class="has-bottom-bar">
+{{> header}}
+<main id="inhalt">
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Rechtliches</span>
+      <h1>Impressum</h1>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container legal">
+      <h2>Angaben gemäß § 5 DDG</h2>
+      <p>{{name}}<br>Inhaber: {{ph:inhaber}}<br>{{strasse}}<br>{{plz}} {{ort}}</p>
+      <h2>Kontakt</h2>
+      <p>Telefon: <a href="{{telefonLink}}">{{telefon}}</a><br>E-Mail: {{ph:email}}</p>
+      <h2>Umsatzsteuer-ID</h2>
+      <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: {{ph:ustId}}<br><small>(entfällt, falls nicht vorhanden)</small></p>
+      <h2>Verbraucherstreitbeilegung</h2>
+      <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+      <h2>Haftung für Inhalte und Links</h2>
+      <p>Die Inhalte dieser Seite wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte, insbesondere der Preise, können wir jedoch keine Gewähr übernehmen. Für die Inhalte verlinkter externer Seiten (z. B. Google Maps, Instagram, Facebook) sind ausschließlich deren Betreiber verantwortlich.</p>
+    </div>
+  </section>
+</main>
+{{> footer}}
+{{> bottombar}}
+{{> scripts}}
+</body>
+</html>

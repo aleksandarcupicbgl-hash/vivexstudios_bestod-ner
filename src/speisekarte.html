@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="de">
+<head>
+{{> head}}
+<title>Speisekarte – Besto Döner & Pizza Altötting | Döner, Pizza, Pasta & Salate</title>
+<meta name="description" content="Die komplette Speisekarte von Besto Döner & Pizza in Altötting: Döner, Dürüm, Lahmacun, Falafel, über 30 Pizzen, Spaghetti, Salate und Getränke – mit allen Preisen. Jetzt anrufen: 0160 4187229.">
+<link rel="canonical" href="{{domain}}/speisekarte.html">
+<meta property="og:title" content="Speisekarte – Besto Döner & Pizza Altötting">
+<meta property="og:description" content="Döner, Dürüm, Lahmacun, Pizza, Pasta & Salate in Altötting – alle Gerichte und Preise.">
+<meta property="og:url" content="{{domain}}/speisekarte.html">
+<script type="application/ld+json">{{jsonldMenu}}</script>
+</head>
+<body class="has-bottom-bar">
+{{> header}}
+
+<main id="inhalt">
+  <section class="page-hero" aria-labelledby="karte-title">
+    <div class="container">
+      <img class="print-logo" src="assets/img/logo.png" alt="Besto Döner & Pizza">
+      <span class="eyebrow">Döner &amp; Pizza · Imbiss Altötting</span>
+      <h1 id="karte-title">Speisekarte</h1>
+      <p class="page-hero__lead">Döner, Dürüm &amp; Lahmacun, Pizza in drei Größen, Pasta, Salate und Getränke – alles frisch für Dich zubereitet.</p>
+      <p class="fresh-note">{{icon:bread}}<span>Unser Döner- und Dürümbrot wird bei jeder Bestellung frisch gebacken!</span></p>
+      <div class="page-hero__cta">
+        <a class="btn btn--lg" href="{{telefonLink}}">{{icon:phone}}Jetzt bestellen: {{telefon}}</a>
+        <button class="btn btn--ghost btn--lg no-print" type="button" onclick="window.print()">{{icon:printer}}Karte drucken</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-section" aria-label="Gerichte">
+    <div class="container">
+      <div class="menu-layout">
+        <aside class="menu-nav-wrap" aria-label="Kategorien">
+          <p class="menu-nav__title">Kategorien</p>
+          <nav class="menu-nav" id="menu-nav" aria-label="Kategorien der Speisekarte">{{menuNav}}</nav>
+          <div class="menu-nav-aside">
+            <strong>Mittags günstiger</strong>
+            {{mittagZeit}} – {{mittagHinweis}}.
+            <a class="btn btn--yellow btn--block" href="{{telefonLink}}">{{icon:phone}}Anrufen</a>
+          </div>
+        </aside>
+
+        <div class="menu-main">
+          <div class="menu-tools">
+            <label class="search">
+              <span class="sr-only">Gericht suchen</span>
+              {{icon:search}}
+              <input type="search" id="menu-search" placeholder="Gericht suchen …" autocomplete="off" enterkeyhint="search">
+            </label>
+            <div class="filters" role="group" aria-label="Filter">
+              <button class="chip" type="button" data-filter="alle" aria-pressed="true">{{icon:grid}}Alle</button>
+              <button class="chip chip--veg" type="button" data-filter="veg" aria-pressed="false">{{icon:leaf}}Vegetarisch</button>
+              <button class="chip" type="button" data-filter="fleisch" aria-pressed="false">{{icon:flame}}Mit Fleisch</button>
+              <button class="chip" type="button" data-filter="fisch" aria-pressed="false">{{icon:fish}}Fisch &amp; Meeresfrüchte</button>
+            </div>
+          </div>
+          <p class="menu-status" id="menu-status" role="status" aria-live="polite"></p>
+
+          <div id="menu-list">
+{{menu}}
+          </div>
+
+          <div class="menu-empty" id="menu-empty" hidden>
+            <strong>Nichts gefunden</strong>
+            <p>Probier einen anderen Suchbegriff – oder ruf uns an, wir beraten Dich gern.</p>
+            <button class="btn btn--dark" type="button" id="menu-reset">Filter zurücksetzen</button>
+          </div>
+
+          <div class="menu-legal">
+            <div class="panel" id="allergene">
+              <h2>Allergene &amp; Zusatzstoffe</h2>
+              <p>Informationen zu Allergenen und Zusatzstoffen erhalten Sie auf Nachfrage bei unserem Personal.</p>
+              <p><span class="placeholder">[ALLERGEN-LEGENDE]</span> – hier folgt die Legende der Kennzeichnungen (z. B. a = glutenhaltiges Getreide, 1 = mit Farbstoff …).</p>
+            </div>
+            <p class="menu-footnote">Alle Preise in Euro inkl. MwSt. Getränke zzgl. Pfand. Irrtümer, Schreib- und Druckfehler vorbehalten.<br>Stand: {{ph:stand}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+{{> footer}}
+{{> bottombar}}
+{{> scripts}}
+<script src="assets/js/speisekarte.js"></script>
+<script src="assets/js/menu.js"></script>
+</body>
+</html>
